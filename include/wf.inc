@@ -68,7 +68,7 @@
 -record(draggable, {?ELEMENT_BASE(element_draggable), tag, body=[], group, handle, clone=true, revert=true}).
 -record(droppable, {?ELEMENT_BASE(element_droppable), tag, body=[], accept_groups=all, active_class=active, hover_class=hover}).
 -record(gravatar, {?ELEMENT_BASE(element_gravatar), email="", size="80", rating="g", default=""}).
-
+-record(interface,{?ELEMENT_BASE(element_interface),functions,parentModule}).
 %%% Controls %%%
 -define(CONTROL_BASE(Module), ?ELEMENT_BASE(Module), tag).
 -record(inplace_textbox, {?CONTROL_BASE(element_inplace_textbox), text="", html_encode=true, start_mode=view, validators=[]}).

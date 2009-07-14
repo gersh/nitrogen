@@ -17,6 +17,10 @@ body() -> [
 		functions=[#fType{name="test",params=["a1","a2"]}],
 		parentModule=?MODULE
 	},
+	#interface{
+		functions=[#fType{name="test2",params=[]}],
+		parentModule=?MODULE
+	},
 	"<div id=\"test_out\"/>",
 	#hidden{id="me"}
 ].

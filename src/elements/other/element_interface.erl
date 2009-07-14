@@ -7,18 +7,19 @@
 %%
 % getFunctionCall/1
 %%
-getFunctionCall([P|Params]) ->
-	if length(Params)>0 ->
+getFunctionCall([P|Params]) when length(Params)>0 ->
 		["'",P,"':",P,",",getFunctionCall(Params)];
-	length(Params)==0 ->
-		["'",P,"':",P]
-	end.
-getParamsCall([P|Params]) ->
-	if length(Params)>0 ->
+getFunctionCall([]) ->
+		[];
+getFunctionCall([P|_Params]) ->
+		["'",P,"':",P].
+
+getParamsCall([P|Params]) when length(Params)>0 ->
 		[P,",",getParamsCall(Params)];
-	   length(Params)==0 ->
-		[P]
-	end.
+getParamsCall([P|_Params]) ->
+		[P];
+getParamsCall([]) ->
+		[].
 %%
 % getPostbackFunctions/3
 %%

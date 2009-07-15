@@ -16,6 +16,7 @@ all_test_() ->
    {module, element_p_test},
    {module, element_span_test},
    {module, element_value_test},
+   {module, element_interface_test},
 
 	 {module, element_textarea_test},
 

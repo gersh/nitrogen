@@ -44,3 +44,10 @@ make_postback(Postback, EventType, TriggerPath, TargetPath, Delegate) ->
 			PickledPostbackInfo = make_postback_info(Tag, EventType, TriggerPath, TargetPath, Delegate),
 			wf:f("Nitrogen.$queue_event('~s', '~s');", [wf:to_js_id(TriggerPath), PickledPostbackInfo])
 	end.
+make_postback(Postback, EventType, TriggerPath, TargetPath, Delegate, ExtraParams) ->
+	case Postback of
+		undefined -> [];
+		Tag ->
+			PickledPostbackInfo = make_postback_info(Tag, EventType, TriggerPath, TargetPath, Delegate),
+			wf:f("Nitrogen.$queue_event('~s', '~s',~s);", [wf:to_js_id(TriggerPath), PickledPostbackInfo,ExtraParams])
+	end.

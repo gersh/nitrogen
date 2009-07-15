@@ -33,7 +33,7 @@ column2() -> [
 	#h3 { text="Effects, Events, and Ajax" },
 	#p{},
 	#link { text="Postbacks", url="/web/samples/postback" }, #br{}, 
-	#link { text="Postbacks with API",url="/web/samples/postbackextra"},#br{}},
+	#link { text="Postbacks with API",url="/web/samples/postbackextra"},#br{},
 	#link { text="AJAX Replacement", url="/web/samples/ajax" }, #br{}, 
 	#link { text="User Notices", url="/web/samples/notices" }, #br{}, 
 

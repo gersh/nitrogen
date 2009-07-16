@@ -26,7 +26,7 @@ getParamsCall([]) ->
 getPostbackFunctions(_ControlId,[],Functions,_Module) ->
 	Functions;
 getPostbackFunctions(ControlId,[F|FNames],Functions,Module) ->
-	Function=["function ",F#fType.name,"(",getParamsCall(F#fType.params),") {",action_event:make_postback(list_to_atom(F#fType.name),click,list_to_atom(ControlId),list_to_atom(ControlId),Module),["jQuery.param({",getFunctionCall(F#fType.params),"})"],";}"],
+	Function=["function ",F#fType.name,"(",getParamsCall(F#fType.params),") {",action_event:make_postback(list_to_atom(F#fType.name),click,list_to_atom(ControlId),list_to_atom(ControlId),Module,["jQuery.param({",getFunctionCall(F#fType.params),"})"]),";}"],
 	getPostbackFunctions(ControlId,FNames,[Function|Functions],Module).
 getPostbackFunctions(ControlId,FNames,Module) ->
 	getPostbackFunctions(ControlId,FNames,[],Module).

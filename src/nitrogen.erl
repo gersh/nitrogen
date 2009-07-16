@@ -119,7 +119,7 @@ get_port() ->
 get_wwwroot() -> 
 	case get_env(serving_app(), wwwroot) of
 		{ok, Val} -> Val;
-		_ -> "./wwwroot"
+		_ -> "/opt/chatyeo/wwwroot"
 	end.
 
 get_templateroot() ->

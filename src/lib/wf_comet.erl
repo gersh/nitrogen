@@ -154,7 +154,7 @@ comet_loop() ->
 	end.
 
 %% collect_content/0 - Gather all content sent to this comet_loop.
-collect_content() -> lists:reverse(inner_collect_content()).
+collect_content() -> inner_collect_content().
 inner_collect_content() ->
 	receive 
 		{content, C} -> [C|inner_collect_content()]

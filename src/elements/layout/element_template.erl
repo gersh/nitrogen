@@ -139,13 +139,12 @@ eval_callbacks([H|T], Record) ->
 			case erlang:apply(Module, Function, Args) of
 				undefined -> 
 					% Function returns undefined, so try the next one.
-					eval_callbacks(T, Record);
-
-				Data ->
-					% Got some data. Render it if necessary.
-					case wf:is_string(Data) of
-						true -> Data;
-						false -> wf:render(Data)
-					end
+              eval_callbacks(T, Record);
+          Data ->
+                                                % Got some data. Render it if necessary.
+              case wf:is_string(Data) of
+                  true -> Data;
+                  false -> wf:render(Data)
+              end
 			end
 	end.

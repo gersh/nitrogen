@@ -5,9 +5,11 @@
 -module (wf_comet).
 -include ("wf.inc").
 -export ([
-	comet/1,
-	comet_flush/0,
-	get_content/0
+          comet/1,
+          comet_no_spawn/1,
+          comet_flush/0,
+          reset_nitrogen_state/0,
+          get_content/0
 ]).
 
 % Comet in Nitrogen has three moving parts:
@@ -74,7 +76,17 @@ comet(Type, Function) ->
 		comet_flush()
 	end,
 	spawn(F).
-	
+
+comet_no_spawn(Function) ->
+    ensure_comet_loop(),
+
+    CurrentState = get(),
+
+    {ok, Pid} = Function(CurrentState), 
+    
+    %comet_flush(),
+    Pid.
+
 comet_flush() ->
 	% Process any flash events...
 	element_flash:update(),
@@ -154,7 +166,7 @@ comet_loop() ->
 	end.
 
 %% collect_content/0 - Gather all content sent to this comet_loop.
-collect_content() -> lists:reverse(inner_collect_content()).
+collect_content() -> inner_collect_content(). %lists:reverse(inner_collect_content()).
 inner_collect_content() ->
 	receive 
 		{content, C} -> [C|inner_collect_content()]

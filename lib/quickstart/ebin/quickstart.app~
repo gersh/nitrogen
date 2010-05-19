@@ -1,0 +1,6 @@
+{application, quickstart, [
+	{description,  "Nitrogen Quickstart"},
+	{vsn, "2.0"},
+	{applications, [nitrogen]}
+	{mod, {quickstart_app, []}}
+]}.
